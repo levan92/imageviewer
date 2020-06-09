@@ -31,6 +31,11 @@ def trackbar_callback(value):
 trackbar_name = ''
 cv2.createTrackbar(trackbar_name, win_name, 1, num_images, trackbar_callback)
 
+print('`f` for forward and `d` to move back.')
+print('`g` to fast forward and `s` to fast back.')
+print('`enter` or `spacebar` to print filename.')
+print('`q` or `Esc` to quit.')
+
 # for imgpath in image_paths:
 while True:
     i_plus_1 = cv2.getTrackbarPos(trackbar_name, win_name)
