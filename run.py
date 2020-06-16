@@ -1,3 +1,4 @@
+import os
 import cv2
 import argparse
 from pathlib import Path
@@ -9,12 +10,21 @@ IMG_EXTS.extend([e.upper() for e in IMG_EXTS])
 
 parser = argparse.ArgumentParser()
 parser.add_argument('images_dir', help='path to directory of images')
+parser.add_argument('--sort-time', help='sort images by time instead of name', action='store_true')
 args = parser.parse_args()
 
 images_dir = Path(args.images_dir)
 assert images_dir.is_dir()
 
 image_paths = [ip for ip in images_dir.rglob('*') if ip.suffix in IMG_EXTS]
+if args.sort_time:
+    sortkey = os.path.getmtime
+    print('Sorting from earlier to latest..')
+else:
+    sortkey = lambda x: str(x).lower()
+    print('Sorting alphabetically..')
+image_paths.sort(key=sortkey)
+
 num_images = len(image_paths)
 print('Total number of images found: {}'.format(num_images))
 
