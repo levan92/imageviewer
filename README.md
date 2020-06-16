@@ -13,3 +13,6 @@ Works well for viewing large number of images in a folder (always hangs when doi
 - `s` to move back by 10% of total number of images
 - `enter` or `spacebar` to print out filename onto terminal output
 - `q` or `esc` to quit
+
+## Command Line Options
+`--sort-time` will sort the images by time from earliest to latest, instead of alphabetically (default). 
